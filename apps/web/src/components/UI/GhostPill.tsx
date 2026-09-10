@@ -4,11 +4,9 @@ interface GhostPillProps {
   label: string
   href?: string
   onClick?: () => void
-  // 'dark' (default) = white border on black canvas per {button-ghost-on-dark}
-  variant?: 'dark'
 }
 
-// The brand's single ghost-outlined pill CTA per DESIGN.md.
+// The brand's single ghost-outlined pill CTA per DESIGN.md {button-ghost-on-dark}.
 // One per screen, never filled, never accent-colored.
 // Spec: 1px solid #fff border, 32px border-radius ({rounded.pill}),
 //       padding 18px 24px ({spacing.lg} {spacing.xl}),
@@ -24,7 +22,7 @@ export function GhostPill({ label, href, onClick }: GhostPillProps) {
         transition: { duration: 0.18, ease: 'easeOut' },
       }
 
-  const baseStyle: React.CSSProperties = {
+  const baseStyle = {
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -38,12 +36,12 @@ export function GhostPill({ label, href, onClick }: GhostPillProps) {
     fontWeight: 700,
     lineHeight: '0.94',
     letterSpacing: '1.17px',
-    textTransform: 'uppercase',
+    textTransform: 'uppercase' as const,
     cursor: 'pointer',
     textDecoration: 'none',
     minHeight: '44px', // WCAG AA touch target
-    whiteSpace: 'nowrap',
-    userSelect: 'none',
+    whiteSpace: 'nowrap' as const,
+    userSelect: 'none' as const,
   }
 
   if (href) {

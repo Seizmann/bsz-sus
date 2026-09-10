@@ -34,7 +34,9 @@ export function CountdownUnit({ value, label, digits = 2 }: CountdownUnitProps) 
         aria-label={`${value} ${label}`}
       >
         {chars.map((char, i) => (
-          // key includes position so each slot animates independently
+          // key = slot index keeps the component instance stable;
+          // the animation key inside CountdownDigit is value itself,
+          // so AnimatePresence fires correctly on every digit change
           <CountdownDigit key={`${label}-${i}`} value={char} />
         ))}
       </div>

@@ -239,3 +239,29 @@ body {
   object-fit: cover;
   object-position: center;
 }
+
+/* ─── Prevent horizontal scroll at all breakpoints ─── */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* ─── Countdown row wraps gracefully on very small screens ─── */
+/* Ensures separators don't orphan on their own line at <360px */
+@media (max-width: 360px) {
+  .countdown-digit-size {
+    font-size: 40px;
+  }
+}
+
+/* ─── Focus-visible ring — keyboard accessibility ─── */
+:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* ─── Selection color — brand consistent ─── */
+::selection {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
