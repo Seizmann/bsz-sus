@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Primary meta -->
+    <title>BSZ SUS — MISSION CLOCK ACTIVE</title>
+    <meta
+      name="description"
+      content="Countdown to kickoff. 11 September 2026, 17:00 BST+6. The pitch is set. The clock is running."
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="BSZ SUS — MISSION CLOCK ACTIVE" />
+    <meta
+      property="og:description"
+      content="Countdown to kickoff. 11 September 2026, 17:00 BST+6. The pitch is set. The clock is running."
+    />
+    <meta property="og:image" content="/og-image.webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="BSZ SUS — MISSION CLOCK ACTIVE" />
+    <meta
+      name="twitter:description"
+      content="Countdown to kickoff. 11 September 2026, 17:00 BST+6. The pitch is set. The clock is running."
+    />
+    <meta name="twitter:image" content="/og-image.webp" />
+
+    <!-- Preload the correct hero image variant for the visitor's viewport -->
+    <script>
+      (function () {
+        var w = window.innerWidth;
+        var link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.type = 'image/webp';
+        if (w >= 1280) {
+          link.href = '/assets/images/hero-bg-desktop.webp';
+        } else if (w >= 768) {
+          link.href = '/assets/images/hero-bg-tablet.webp';
+        } else {
+          link.href = '/assets/images/hero-bg-mobile.webp';
+        }
+        document.head.appendChild(link);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
