@@ -1,0 +1,241 @@
+/* Tailwind CSS v4 — CSS-first config */
+@import "tailwindcss";
+
+/* ─── Custom breakpoints matching DESIGN.md ─── */
+@custom-media --sm (min-width: 600px);
+@custom-media --md (min-width: 768px);
+@custom-media --laptop (min-width: 961px);
+@custom-media --lg (min-width: 1280px);
+@custom-media --xl (min-width: 1500px);
+
+/* ─── Design tokens as CSS custom properties ─── */
+@theme {
+  /* Colors from DESIGN.md */
+  --color-canvas-night: #000000;
+  --color-canvas-night-soft: #0a0a0a;
+  --color-canvas-light: #ffffff;
+  --color-canvas-cool: #f0f0fa;
+  --color-hairline-dark: #3a3a3f;
+  --color-hairline-light: #e0e0e8;
+  --color-on-primary: #ffffff;
+  --color-on-primary-mute: #f0f0fa;
+  --color-ink: #000000;
+  --color-ink-mute: #5a5a5f;
+  --color-link-dark: #ffffff;
+
+  /* Spacing from DESIGN.md */
+  --spacing-xxs: 4px;
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 18px;
+  --spacing-xl: 24px;
+  --spacing-xxl: 32px;
+  --spacing-huge: 48px;
+
+  /* Border radius from DESIGN.md */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-pill: 32px;
+  --radius-full: 9999px;
+
+  /* Custom breakpoints for Tailwind utilities */
+  --breakpoint-sm: 600px;
+  --breakpoint-md: 768px;
+  --breakpoint-laptop: 961px;
+  --breakpoint-lg: 1280px;
+  --breakpoint-xl: 1500px;
+}
+
+/* ─── D-DIN Font face declarations ─── */
+/* D-DIN is freely distributed; falls back to Inter + Arial Narrow per DESIGN.md */
+@font-face {
+  font-family: 'D-DIN';
+  src: local('D-DIN'), local('D DIN');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'D-DIN-Bold';
+  src: local('D-DIN-Bold'), local('D DIN Bold'), local('D-DIN Bold');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ─── Global base ─── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000000; /* {colors.canvas-night} */
+  color: #ffffff; /* {colors.on-primary} */
+  font-family: 'D-DIN', 'Arial', 'Verdana', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.32px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+/* ─── Display type utilities ─── */
+/* Implements DESIGN.md stair-step: <600→40px, 600-767→48px, 768-960→60px, ≥961→80px */
+
+.display-headline {
+  /* {typography.display-xxl} adapted */
+  font-family: 'D-DIN-Bold', 'Arial Narrow', 'Arial', 'Verdana', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 0.95;
+  letter-spacing: 1.6px;
+
+  /* Small mobile default: 40px */
+  font-size: 40px;
+}
+
+@media (min-width: 600px) {
+  .display-headline {
+    font-size: 48px; /* {typography.display-lg} size */
+    letter-spacing: 0.96px;
+    line-height: 1.25;
+  }
+}
+
+@media (min-width: 768px) {
+  .display-headline {
+    font-size: 60px; /* {typography.display-xl} size */
+    letter-spacing: 1.2px;
+    line-height: 1.2;
+  }
+}
+
+@media (min-width: 961px) {
+  .display-headline {
+    font-size: 80px; /* {typography.display-xxl} — Laptop/Desktop/Wide */
+    letter-spacing: 1.6px;
+    line-height: 0.95;
+  }
+}
+
+/* Countdown number size — follows display stair-step */
+.countdown-digit-size {
+  font-family: 'D-DIN-Bold', 'Arial Narrow', 'Arial', 'Verdana', sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+}
+
+@media (min-width: 600px) {
+  .countdown-digit-size {
+    font-size: 64px;
+  }
+}
+
+@media (min-width: 768px) {
+  .countdown-digit-size {
+    font-size: 80px;
+  }
+}
+
+@media (min-width: 961px) {
+  .countdown-digit-size {
+    font-size: 96px;
+  }
+}
+
+/* Micro-cap eyebrow text — {typography.micro-cap} */
+.micro-cap {
+  font-family: 'D-DIN', 'Arial', 'Verdana', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 2.0;
+  letter-spacing: 0.96px;
+  text-transform: uppercase;
+}
+
+/* Button cap text — {typography.button-cap} */
+.button-cap {
+  font-family: 'D-DIN', 'Arial', 'Verdana', sans-serif;
+  font-size: 13.008px;
+  font-weight: 700;
+  line-height: 0.94;
+  letter-spacing: 1.17px;
+  text-transform: uppercase;
+}
+
+/* Caption text — {typography.caption} */
+.text-caption {
+  font-family: 'D-DIN', 'Arial', 'Verdana', sans-serif;
+  font-size: 13.008px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+/* ─── Ghost pill button — {button-ghost-on-dark} ─── */
+/* 1px solid white border, transparent bg, pill radius, no fill */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 24px; /* {spacing.lg} {spacing.xl} */
+  border: 1px solid #ffffff;
+  border-radius: 32px; /* {rounded.pill} */
+  background: transparent;
+  color: #ffffff;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  min-height: 44px; /* WCAG touch target */
+  white-space: nowrap;
+}
+
+.btn-ghost:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.btn-ghost:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* ─── Reduced motion fallback ─── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Utility: full bleed cover ─── */
+.bg-cover-full {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
